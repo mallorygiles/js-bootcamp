@@ -5,8 +5,18 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'public/scripts'), //needs to be absolute patch
         filename: 'bundle.js'
+    },
+    module: {
+        rules: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['env']
+                }
+            }
+        }]
     }
 }
 
-
-//C:\Users\Mallory\Documents\GitHub\js-bootcamp\boilerplate\public\scripts
