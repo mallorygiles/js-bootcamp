@@ -3,7 +3,7 @@ import screaming from './scream'
 
 console.log('index.js')
 
-console.log( add(32, 33))
+console.log( add(300, 33))
 
 console.log(name)
 
