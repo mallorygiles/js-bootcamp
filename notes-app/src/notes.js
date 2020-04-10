@@ -29,6 +29,8 @@ const createNote = () => {
    })
 
    saveNotes()
+
+   return newNoteId
 }
 
 //Save the note to local storage
@@ -98,7 +100,7 @@ const updateNote = (id, updates) => {
         note.updatedAt = moment.valueOf()
     }
     saveNotes()
-
+    return note
 }
 
 notes = loadNotes()
