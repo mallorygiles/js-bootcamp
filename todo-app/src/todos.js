@@ -10,6 +10,7 @@ const loadTodos = () => {
     const todosJSON = localStorage.getItem('todos')
     try {
         todos = todosJSON ? JSON.parse(todosJSON) : []
+        console.log(`loaded ${todos.length} todos from local storage`)
     } catch(e) {
         todos =  []
     }
@@ -44,10 +45,10 @@ const createTodo = (text) => {
 // Return value: none
 const removeTodo = (id) => {
     const todoIndex = todos.findIndex((todo) => todo.id === id)
-    if (todoIndex) {
+    if (todoIndex > -1) {
         todos.splice(todoIndex, 1)
+        saveTodos()
     }
-    saveTodos()
 }
 
 // toggleTodo
@@ -57,8 +58,8 @@ const toggleTodo = (id) => {
     const todo = todos.find((todo) => todo.id === id)
     if (todo) {
         todo.complete = !todo.complete
+        saveTodos()
     }
-    saveTodos()
 
 }
 

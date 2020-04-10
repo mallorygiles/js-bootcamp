@@ -4,33 +4,35 @@
 // --
 
 // Add necessary imports
-import {getFilters, setFilters} from './filters'
-import { getTodos, createTodo, removeTodo, toggleTodo } from './todos'
-
-/* console.log(getFilters())
-setFilters({
-    searchText: 'item',
-    hideCompleted: true
-})
-console.log(getFilters()) */
-console.log(getTodos()[1].complete)
-/* createTodo('todo 1')
-createTodo('todo 2')
-createTodo('todo 3')
-createTodo('todo 4')
-createTodo('todo 5') */
-//removeTodo('19b6a136-d2ba-4783-91fa-a06987ffd51d')
-toggleTodo('87833267-2195-441f-95e1-e324ca34654e')
-console.log(getTodos()[1].complete)
-
+import { setFilters } from './filters'
+import {  createTodo } from './todos'
+import {renderToDos} from './views'
 
 
 // Render initial todos
+renderToDos()
 
 // Set up search text handler
+document.querySelector('#search').addEventListener('input', (e) => {
+    setFilters({searchText: e.target.value})
+    renderToDos()
+})
 
 // Set up checkbox handler
+document.querySelector('#hideChkBx').addEventListener('change', (e) => {
+    setFilters({hideCompleted: e.target.checked})
+    renderToDos()
+})
 
 // Set up form submission handler
+document.querySelector('#todoForm').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const todoText = e.target.elements.newTodo.value.trim()
+    if(todoText.length > 0){
+        createTodo(todoText)
+        renderToDos()
+    }
+    e.target.elements.newTodo.value = ''
+})
 
 // Bonus: Add a watcher for local storage
