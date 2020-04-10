@@ -7,14 +7,14 @@ import {getFilters} from './filters'
 const renderToDos = () => {
 
     const todos = getTodos()
-    const filters = getFilters()
+    const {searchText, hideCompleted} = getFilters()
     
     const todoDiv = document.querySelector('#todo-list')
     todoDiv.innerHTML = ''    
 
     const filteredTodos = todos
-        .filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
-        .filter((todo) => !filters.hideCompleted || !todo.complete)
+        .filter((todo) => todo.text.toLowerCase().includes(searchText.toLowerCase()))
+        .filter((todo) => !hideCompleted || !todo.complete)
 
     todoDiv.appendChild(generateSummaryDOM(filteredTodos))
 

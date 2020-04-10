@@ -12,12 +12,12 @@ const getFilters = () => filters
 // setFilters
 // Arguments: updates object with optional searchText or hideCompleted
 // Return value: none
-const setFilters = (update) => {
-    if (typeof update.searchText === 'string') {
-        filters.searchText = update.searchText
+const setFilters = ({searchText, hideCompleted}) => {
+    if (typeof searchText === 'string') {
+        filters.searchText = searchText
     }
-    if (typeof update.hideCompleted === 'boolean') {
-        filters.hideCompleted = update.hideCompleted
+    if (typeof hideCompleted === 'boolean') {
+        filters.hideCompleted = hideCompleted
     }
 }
 
