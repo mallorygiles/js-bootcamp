@@ -23,7 +23,8 @@ class Hangman {
     makeGuess(guess) {
         guess = guess.toLowerCase();
         if (!this.guessedLetters.includes(guess)) {
-            this.guessedLetters.push(guess);
+            //this.guessedLetters.push(guess);
+            this.guessedLetters = [...this.guessedLetters, guess]
             if (!this.word.includes(guess)) {
                 this.remainingGuesses--;
             }
