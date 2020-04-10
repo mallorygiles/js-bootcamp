@@ -1,6 +1,13 @@
 'use strict'
 import Hangman from './hangman'
 import getNewPuzzle from './request'
+import uuidv4 from 'uuid/v4'
+import validator from 'validator'
+
+console.log(uuidv4())
+
+console.log(validator.isEmail('email'))
+
 
 let game1 = new Hangman('Atlantic City', 10)
 
